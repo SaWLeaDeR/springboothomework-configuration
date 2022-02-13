@@ -10,8 +10,6 @@ server:
     context-path: /link-converter
 
 management:
-  server:
-    port: 9000
   endpoints:
     web:
       exposure:
