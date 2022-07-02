@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: event-manager
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      database: customer
+      password: example
+      username: root
+
+server:
+  port: 8091
+  servlet:
+    context-path: /event-manager
+
+
+kafka:
+  bootstrapServers: localhost:29092
+  valueSerializer: org.apache.kafka.common.serialization.StringSerializer
+  keySerializer: org.apache.kafka.common.serialization.StringSerializer
+  acks: all
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
+
+monitoring:
+  graphite:
+    host: localhost
+    port: 3000
+    report-interval: 500

@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: user-consumer
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:mysql://localhost:3306/bootdb?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    platform: mysql
+    driverClassName: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa :
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto : update
+server:
+  port: 8093
+  servlet:
+    context-path: /user-consumer
+
+
+kafka:
+  bootstrapServers: localhost:29092
+  groupId: user-consumer
+  autoOffsetReset: latest
+  valueDeserializer: org.apache.kafka.common.serialization.StringSerializer
+  keyDeserializer: org.apache.kafka.common.serialization.StringSerializer
+
+event-manager:
+  baseUrl: http://localhost:8091/event-manager
+  sendEvent: /event
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
+
+monitoring:
+  graphite:
+    host: localhost
+    port: 3000
+    report-interval: 500

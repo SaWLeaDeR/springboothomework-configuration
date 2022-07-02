@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: case2
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  port: 8092
+  servlet:
+    context-path: /case2-producer
+
+event-manager:
+  baseUrl: http://localhost:8091/event-manager
+  sendEvent: /event
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
+
+user-consumer:
+  service:
+    url: http://localhost:8093/user-consumer
+    save: /user
+
+monitoring:
+  graphite:
+    host: localhost
+    port: 3000
+    report-interval: 500
