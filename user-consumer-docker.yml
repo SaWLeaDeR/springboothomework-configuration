@@ -23,7 +23,7 @@ server:
     context-path: /user-consumer
 
 kafka:
-  bootstrapServers: kafka:29092
+  bootstrapServers: kafka:9092
   groupId: user-consumer-docker
   autoOffsetReset: latest
   valueDeserializer: org.apache.kafka.common.serialization.StringSerializer
