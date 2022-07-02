@@ -21,7 +21,7 @@ server:
     context-path: /event-manager
 
 kafka:
-  bootstrapServers: localhost:29092
+  bootstrapServers: kafka:29092
   valueSerializer: org.apache.kafka.common.serialization.StringSerializer
   keySerializer: org.apache.kafka.common.serialization.StringSerializer
   acks: all
